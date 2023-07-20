@@ -27,18 +27,25 @@ const ItemList = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [appliedFilters, setAppliedFilters] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Number of items to display per page
 
   const handleSelectCategory = (category) => {
     setSelectedCategory(category);
-    // Filter items based on the selected category and applied filters
+    setCurrentPage(1); // Reset pagination to the first page when changing category or filters.
     // Implement the logic to filter items by category and filters here.
   };
 
   const handleApplyFilters = (filters) => {
     setAppliedFilters(filters);
-    // Filter items based on the selected category and applied filters
+    setCurrentPage(1); // Reset pagination to the first page when changing category or filters.
     // Implement the logic to filter items by category and filters here.
   };
+
+  // Calculate the index of the first and last item to display on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="item-list">
@@ -49,10 +56,8 @@ const ItemList = () => {
       />
       <Filters onApplyFilters={handleApplyFilters} />
       <div className="items-container">
-        {items.map((item) => (
-          // Add the logic here to filter items based on the selectedCategory and appliedFilters
-          // For example, if (selectedCategory && item.category !== selectedCategory) return null;
-          // Also, apply filters like price range, location, and item condition.
+        {currentItems.map((item) => (
+          // Render items here
           <div key={item.id} className="item">
             <h2>{item.name}</h2>
             <p>{item.description}</p>
@@ -63,6 +68,19 @@ const ItemList = () => {
             <button>View Details</button>
           </div>
         ))}
+      </div>
+      {/* Pagination buttons */}
+      <div className="pagination">
+        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>{currentPage}</span>
+        <button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={indexOfLastItem >= items.length}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
