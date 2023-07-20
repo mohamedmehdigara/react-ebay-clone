@@ -12,10 +12,9 @@ body {
 
 /* Header */
 header {
-  background-color: #333;
+  background-color: #00707d;
   color: #fff;
   padding: 10px;
-  text-align: center;
 }
 
 header h1 {
@@ -93,8 +92,8 @@ main {
 
 /* Footer */
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
   padding: 10px;
   text-align: center;
   margin-top: 20px;
