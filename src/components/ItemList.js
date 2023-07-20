@@ -1,6 +1,7 @@
 import React from 'react';
 import items from '../data/items';
 import BidForm from './BidForm';
+import ProductCard from './ProductCard';
 
 
 
@@ -10,6 +11,9 @@ const ItemList = () => {
         {items.map((item) => (
           <div key={item.id} className="item">
                       <BidForm item={item} />
+                      {items.map((item) => (
+        <ProductCard key={item.id} item={item} />
+      ))}
 
             <h2>{item.name}</h2>
             <p>{item.description}</p>

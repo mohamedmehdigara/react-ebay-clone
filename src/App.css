@@ -138,4 +138,59 @@ button {
   margin-top: 5px;
 }
 
+.product-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.product-card__image {
+  flex: 1;
+  max-width: 150px;
+}
+
+.product-card__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-card__details {
+  flex: 2;
+  margin-left: 20px;
+}
+
+.product-card__details h3 {
+  margin: 0;
+}
+
+.product-card__description {
+  margin-top: 5px;
+}
+
+.product-card__price {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.product-card__buttons {
+  margin-top: 15px;
+}
+
+.product-card__button {
+  background-color: #00707d;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.product-card__button:last-child {
+  margin-right: 0;
+}
+
+
 
